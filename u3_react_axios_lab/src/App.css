@@ -1,42 +1,114 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* App.css */
+
+/* Basic reset */
+body, h1, h2, h3, p, div {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+h2, h4 {
+  color: #1e90ff;
+
+}
+
+.Nav {
+  display: flex;
+  justify-content: center;
+  background-color: black;
+  padding: 10px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+}
+
+.Nav a {
+  color: gold;
+  text-decoration: none;
+  margin: 0 15px;
+  font-size: 16px;
+}
+
+.Nav a:hover {
+  text-decoration: underline;
+}
+
+
+.header {
+  padding: 70px 20px 20px;
   text-align: center;
+  color: gold;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+
+.starShips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.starShipContainer {
+  flex: 1 0 250px; /* Each container takes at least 250px width, and can grow */
+  background-color: black;
+  border: 1px;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.cardContent {
+  padding: 20px; /* Add padding inside the content area */
 }
 
-.card {
-  padding: 2em;
+.cardContent h2, .cardContent p {
+  margin: 0; /* Remove margin from elements inside the container */
+  padding: 1px 0; /* Adjust padding as needed to reduce the gap */
 }
 
-.read-the-docs {
-  color: #888;
+
+.planets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.planetsContainer {
+  flex: 1 0 250px; /* Each container takes at least 250px width, and can grow */
+  background-color: black;
+  border: 1px;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.people {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.peopleContainer {
+  flex: 1 0 250px; /* Each container takes at least 250px width, and can grow */
+  background-color: black;
+  border: 1px;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.films {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.filmsContainer {
+  flex: 1 0 250px; /* Each container takes at least 250px width, and can grow */
+  background-color: black;
+  border: 1px;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
