@@ -10,6 +10,9 @@ function App() {
   const [films, setFilms] = useState([])
   const [planets, setPlanets] = useState([])
   const [people, setPeople] = useState([])
+  const [vehicles, setVehicles] = useState([])
+  const [species, setSpecies] = useState([])
+
 
   useEffect(() =>{
     const getStarShips = async () => {
@@ -64,6 +67,32 @@ function App() {
 
   console.log(people)
 
+  useEffect(() =>{
+    const getVehicles = async () => {
+      const response1 = await axios.get(`https://swapi.dev/api/vehicles`)
+      const response2 = await axios.get(`https://swapi.dev/api/vehicles/?page=2`)
+      const combinedResults = [...response1.data.results, ...response2.data.results]
+      setVehicles(combinedResults)
+    }
+    getVehicles()
+
+  }, [])
+
+  console.log(vehicles)
+
+  useEffect(() =>{
+    const getSpecies = async () => {
+      const response1 = await axios.get(`https://swapi.dev/api/species`)
+      const response2 = await axios.get(`https://swapi.dev/api/species/?page=2`)
+      const combinedResults = [...response1.data.results, ...response2.data.results]
+      setSpecies(combinedResults)
+    }
+    getSpecies()
+
+  }, [])
+
+  console.log(species)
+
 
   return (
     <>
@@ -71,8 +100,10 @@ function App() {
 
     <Main starShips ={starShips}
               films ={films}
-              planets ={planets}
-              people ={people}/>
+            planets ={planets}
+             people ={people}
+           vehicles ={vehicles}
+            species ={species}/>
 
     </>
   )

@@ -25,6 +25,14 @@ export default function Nav (props) {
             <h2>Planet</h2>
             </Link>
 
+            <Link to="/vehicleslist">
+            <h2>Vehicles</h2>
+            </Link>
+
+            <Link to="/specieslist">
+            <h2>Species</h2>
+            </Link>
+
 
 
 

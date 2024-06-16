@@ -50,7 +50,7 @@ h2, h4 {
 }
 
 .starShipContainer {
-  flex: 1 0 250px; /* Each container takes at least 250px width, and can grow */
+  flex: 1 0 250px; 
   background-color: black;
   border: 1px;
   border-radius: 8px;
@@ -59,12 +59,12 @@ h2, h4 {
 }
 
 .cardContent {
-  padding: 20px; /* Add padding inside the content area */
+  padding: 20px; 
 }
 
 .cardContent h2, .cardContent p {
-  margin: 0; /* Remove margin from elements inside the container */
-  padding: 1px 0; /* Adjust padding as needed to reduce the gap */
+  margin: 0; 
+  padding: 1px 0; 
 }
 
 
@@ -75,7 +75,7 @@ h2, h4 {
 }
 
 .planetsContainer {
-  flex: 1 0 250px; /* Each container takes at least 250px width, and can grow */
+  flex: 1 0 250px; 
   background-color: black;
   border: 1px;
   border-radius: 8px;
@@ -90,7 +90,7 @@ h2, h4 {
 }
 
 .peopleContainer {
-  flex: 1 0 250px; /* Each container takes at least 250px width, and can grow */
+  flex: 1 0 250px; 
   background-color: black;
   border: 1px;
   border-radius: 8px;
@@ -105,7 +105,37 @@ h2, h4 {
 }
 
 .filmsContainer {
-  flex: 1 0 250px; /* Each container takes at least 250px width, and can grow */
+  flex: 1 0 500px; 
+  background-color: black;
+  border: 1px;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.vehicles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.vehiclesContainer {
+  flex: 1 0 250px; 
+  background-color: black;
+  border: 1px;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.species {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.speciesContainer {
+  flex: 1 0 250px; 
   background-color: black;
   border: 1px;
   border-radius: 8px;
