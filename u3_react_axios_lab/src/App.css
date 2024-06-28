@@ -10,7 +10,6 @@ body, h1, h2, h3, p, div {
 
 h2, h4 {
   color: #1e90ff;
-
 }
 
 .Nav {
@@ -35,110 +34,81 @@ h2, h4 {
   text-decoration: underline;
 }
 
-
 .header {
   padding: 70px 20px 20px;
   text-align: center;
   color: gold;
 }
 
-
-.starShips {
+.starship {
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 100px;
 }
 
-.starShipContainer {
-  flex: 1 0 250px; 
+.starship h2 {
+  margin-bottom: 20px;
+}
+
+.card {
   background-color: black;
-  border: 1px;
+  color: gold;
+  border: 1px solid #1e90ff;
   border-radius: 8px;
   padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+  width: 200px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.cardContent {
-  padding: 20px; 
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-.cardContent h2, .cardContent p {
-  margin: 0; 
-  padding: 1px 0; 
+.card h3 {
+  margin: 0;
 }
 
-
-.planets {
+.detail {
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-.planetsContainer {
-  flex: 1 0 250px; 
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   background-color: black;
-  border: 1px;
+  color: gold;
+  border: 1px solid #1e90ff;
   border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 40px; /* Increase padding for more space */
+  margin: 10px auto; /* Center horizontally and provide margin */
+  max-width: 600px; /* Limit width for better readability */
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: fixed; /* Fix the position of the card */
+  top: 50%; /* Position from the top */
+  left: 50%; /* Position from the left */
+  transform: translate(-50%, -50%); /* Center the card */
 }
 
-.people {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+.detail h2, .detail h4 {
+  margin: 20px 0; /* Larger margins for headings */
+  font-size: 28px; /* Increase font size for headings */
 }
 
-.peopleContainer {
-  flex: 1 0 250px; 
-  background-color: black;
-  border: 1px;
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.detail p {
+  margin: 10px 0; /* Larger margins for paragraphs */
+  font-size: 18px; /* Increase font size for paragraphs */
 }
 
-.films {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+.detail a {
+  color: #1e90ff;
+  text-decoration: none;
 }
 
-.filmsContainer {
-  flex: 1 0 500px; 
-  background-color: black;
-  border: 1px;
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.vehicles {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-.vehiclesContainer {
-  flex: 1 0 250px; 
-  background-color: black;
-  border: 1px;
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.species {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-.speciesContainer {
-  flex: 1 0 250px; 
-  background-color: black;
-  border: 1px;
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.detail a:hover {
+  text-decoration: underline;
 }

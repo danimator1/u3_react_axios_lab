@@ -5,7 +5,7 @@ export default function Nav (props) {
         <div className= 'Nav'>
             {/* <h2> Nav</h2> */}
 
-            <Link to="/home">
+            <Link to="/">
             <h2> Home </h2>
             </Link>
 

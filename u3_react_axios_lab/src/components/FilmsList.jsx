@@ -1,23 +1,34 @@
-export default function FilmsList (props) {
-    // console.log(props)
-    // const thing = ""
-    if (!props.films) {
-        return <h1> Loading Please Wait </h1>
-        } else {
-              return (
-                <div className="films">
-                    {
-                        props.films.map((films, index)=>(
-                          <div key={index}  className="filmsContainer">
-                            <div className="cardContent">
-                            <h4> Name:</h4><p> {films.title}</p>
-                            <h4> Episode:</h4><p> {films.episode_id}</p>
-                            <h4> Director:</h4><p> {films.director}</p>
-                          </div> 
-                          </div> 
-                        ))
-                    }
-                </div>
-            )
-        }}
-    
+import { useState, useEffect } from "react"
+import axios from "axios"
+import { useNavigate } from "react-router-dom"
+
+export default function FilmsList() {
+  const [films, setFilms] = useState([])
+
+  useEffect(() => {
+    const getFilms = async () => {
+      const response = await axios.get(`https://swapi.dev/api/films`)
+      setFilms(response.data.results)
+    }
+    getFilms()
+  }, [])
+
+  let navigate = useNavigate()
+
+  const showFilm = (index) => {
+    navigate(`/films/${index}`)
+  }
+
+  return (
+    <div className="film">
+      <h2>List of Film</h2>
+      {
+        films.map((film, index) => (
+          <div key={index} onClick={() => showFilm(index)} className="card">
+            <h3>{film.title}</h3>
+          </div>
+        ))
+      }
+    </div>
+  )
+}

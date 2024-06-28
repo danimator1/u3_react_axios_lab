@@ -1,23 +1,36 @@
-export default function PeopleList (props) {
-    // console.log(props)
-    // const thing = ""
-    if (!props.people) {
-        return <h1> Loading Please Wait </h1>
-        } else {
-              return (
-                <div className="people">
-                    {
-                        props.people.map((people, index)=>(
-                          <div key={index}  className="peopleContainer">
-                            <div className="cardContent">
-                            <h2> {people.name}</h2>
-                            <h4> Gender:</h4><p> {people.gender}</p>
-                            <h4> height:</h4><p> {people.height}</p>
-                            <h4> Birth Year:</h4><p> {people.birth_year}</p>
-                            </div>
-                          </div>  
-                        ))
-                    }
-                </div>
-            )
-        }}
+import { useState, useEffect } from "react"
+import axios from "axios"
+import { useNavigate } from "react-router-dom"
+
+export default function PeopleList() {
+  const [pep, setPeople] = useState([])
+
+  useEffect(() => {
+    const getPeople = async () => {
+      const response1 = await axios.get("https://swapi.dev/api/people")
+      const response2 = await axios.get("https://swapi.dev/api/people/?page=2")
+      const combinedResults = [...response1.data.results, ...response2.data.results]
+      setPeople(combinedResults)
+    }
+    getPeople()
+  }, [])
+
+  let navigate = useNavigate()
+
+  const showPeople = (index) => {
+    navigate(`/people/${index}`)
+  }
+
+  return (
+    <div className="pepole">
+      <h2>List of People</h2>
+      {
+        pep.map((pep, index) => (
+          <div key={index} onClick={() => showPeople(index)} className="card">
+            <h3>{pep.name}</h3>
+          </div>
+        ))
+      }
+    </div>
+  )
+}

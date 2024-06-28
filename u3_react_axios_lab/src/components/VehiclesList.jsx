@@ -1,25 +1,36 @@
-export default function VehiclespList (props) {
-    // console.log(props)
-    // const thing = ""
-    if (!props.vehicles) {
-        return <h1> Loading Please Wait </h1>
-        } else {
-              return (
-                <div className="vehiclesPage">
-                <div className="vehicles">
-                    {
-                        props.vehicles.map((vehicles, index)=>(
-                          <div key={index}  className="vehiclesContainer">
-                            <div className="cardContent">
-                            <h2>{vehicles.name}</h2>
-                            <h4>Model:</h4> <p>{vehicles.model}</p>
-                            <h4>manufacturer:</h4><p>{vehicles.manufacturer}</p>
-                            </div>  
-                          </div>  
-                         
-                        ))
-                    }
-                     </div>
-                </div>
-            )
-        }}
+import { useState, useEffect } from "react"
+import axios from "axios"
+import { useNavigate } from "react-router-dom"
+
+export default function VehicleList() {
+  const [vehicle, setVehicle] = useState([])
+
+  useEffect(() => {
+    const getVehicle = async () => {
+      const response1 = await axios.get("https://swapi.dev/api/vehicles")
+      const response2 = await axios.get("https://swapi.dev/api/vehicles/?page=2")
+      const combinedResults = [...response1.data.results, ...response2.data.results]
+      setVehicle(combinedResults)
+    }
+    getVehicle()
+  }, [])
+
+  let navigate = useNavigate()
+
+  const showVehicle = (index) => {
+    navigate(`/vehicle/${index}`)
+  }
+
+  return (
+    <div className="vehicle">
+      <h2>List of Vehicle</h2>
+      {
+        vehicle.map((vehicle, index) => (
+          <div key={index} onClick={() => showVehicle(index)} className="card">
+            <h3>{vehicle.name}</h3>
+          </div>
+        ))
+      }
+    </div>
+  )
+}

@@ -1,25 +1,36 @@
-export default function SpeciespList (props) {
-    // console.log(props)
-    // const thing = ""
-    if (!props.species) {
-        return <h1> Loading Please Wait </h1>
-        } else {
-              return (
-                <div className="speciesPage">
-                <div className="species">
-                    {
-                        props.species.map((species, index)=>(
-                          <div key={index}  className="speciesContainer">
-                            <div className="cardContent">
-                            <h2>{species.name}</h2>
-                            <h4>Classification:</h4> <p>{species.classification}</p>
-                            <h4>Language:</h4><p>{species.language}</p>
-                            </div>  
-                          </div>  
-                         
-                        ))
-                    }
-                     </div>
-                </div>
-            )
-        }}
+import { useState, useEffect } from "react"
+import axios from "axios"
+import { useNavigate } from "react-router-dom"
+
+export default function SpeciesList() {
+  const [speciman, setSepecies] = useState([])
+
+  useEffect(() => {
+    const getSpecies = async () => {
+      const response1 = await axios.get("https://swapi.dev/api/species")
+      const response2 = await axios.get("https://swapi.dev/api/species/?page=2")
+      const combinedResults = [...response1.data.results, ...response2.data.results]
+      setSepecies(combinedResults)
+    }
+    getSpecies()
+  }, [])
+
+  let navigate = useNavigate()
+
+  const showSpecies = (index) => {
+    navigate(`/species/${index}`)
+  }
+
+  return (
+    <div className="species">
+      <h2>List of Species</h2>
+      {
+        speciman.map((speciman, index) => (
+          <div key={index} onClick={() => showSpecies(index)} className="card">
+            <h3>{speciman.name}</h3>
+          </div>
+        ))
+      }
+    </div>
+  )
+}

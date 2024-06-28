@@ -1,26 +1,37 @@
-export default function StarshipList (props) {
-    // console.log(props)
-    // const thing = ""
-    if (!props.starShips) {
-        return <h1> Loading Please Wait </h1>
-        } else {
-              return (
-                <div className="starShipsPage">
-                <div className="starShips">
-                    {
-                        props.starShips.map((starShip, index)=>(
-                          <div key={index}  className="starShipContainer">
-                            <div className="cardContent">
-                            <h2>{starShip.name}</h2>
-                            <h4>Model:</h4> <p>{starShip.model}</p>
-                            <h4>manufacturer:</h4><p>{starShip.manufacturer}</p>
-                            </div>  
-                          </div>  
-                         
-                        ))
-                    }
-                     </div>
-                </div>
-            )
-        }}
-    
+import { useState, useEffect } from "react"
+import axios from "axios"
+import { useNavigate } from "react-router-dom"
+
+export default function StarshipsList() {
+  const [starships, setStarships] = useState([])
+
+  useEffect(() => {
+    const getStarships = async () => {
+      const response1 = await axios.get("https://swapi.dev/api/starships/")
+      const response2 = await axios.get("https://swapi.dev/api/starships/?page=2")
+      const response3 = await axios.get("https://swapi.dev/api/starships/?page=3")
+      const combinedResults = [...response1.data.results, ...response2.data.results, ...response3.data.results]
+      setStarships(combinedResults)
+    }
+    getStarships()
+  }, [])
+
+  let navigate = useNavigate()
+
+  const showShip = (index) => {
+    navigate(`/starship/${index}`)
+  }
+
+  return (
+    <div className="starship">
+      <h2>List of Starships</h2>
+      {
+        starships.map((starship, index) => (
+          <div key={index} onClick={() => showShip(index)} className="card">
+            <h3>{starship.name}</h3>
+          </div>
+        ))
+      }
+    </div>
+  )
+}

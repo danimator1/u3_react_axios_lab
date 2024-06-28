@@ -6,7 +6,7 @@ import Main from './components/Main'
 import Home from './components/Home'
 
 function App() {
-  const [starShips, setStarShip] = useState([])
+  const [starShips, setStarShips] = useState([])
   const [films, setFilms] = useState([])
   const [planets, setPlanets] = useState([])
   const [people, setPeople] = useState([])
@@ -14,17 +14,15 @@ function App() {
   const [species, setSpecies] = useState([])
 
 
-  useEffect(() =>{
-    const getStarShips = async () => {
-        const response1 = await axios.get('https://swapi.dev/api/starships')
-        const response2 = await axios.get('https://swapi.dev/api/starships/?page=2')
-        const response3 = await axios.get('https://swapi.dev/api/starships/?page=3')
-        const combinedResults = [...response1.data.results, ...response2.data.results,...response3.data.results]
-        setStarShip(combinedResults)
-      // console.log('data', response)
+  useEffect(() => {
+    const getStarships = async () => {
+      const response1 = await axios.get("https://swapi.dev/api/starships/")
+      const response2 = await axios.get("https://swapi.dev/api/starships/?page=2")
+      const response3 = await axios.get("https://swapi.dev/api/starships/?page=3")
+      const combinedResults = [...response1.data.results, ...response2.data.results, ...response3.data.results]
+      setStarShips(combinedResults)
     }
-    getStarShips()
-
+    getStarships()
   }, [])
 
   console.log(starShips)

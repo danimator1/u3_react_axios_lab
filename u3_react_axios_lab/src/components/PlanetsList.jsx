@@ -1,23 +1,34 @@
-export default function PlanetsList (props) {
-    // console.log(props)
-    // const thing = ""
-    if (!props.planets) {
-        return <h1> Loading Please Wait </h1>
-        } else {
-              return (
-                <div className="planets">
-                    {
-                        props.planets.map((planets, index)=>(
-                          <div key={index}  className="planetsContainer">
-                             <div className="cardContent">
-                            <h2> {planets.name}</h2>
-                            <h4>Population:</h4><p>{planets.population}</p>
-                            <h4>Climate:</h4><p>{planets.climate}</p>
-                            <h4>terrain:</h4><p>{planets.terrain}</p>
-                          </div>  
-                          </div>  
-                        ))
-                    }
-                </div>
-            )
-        }}
+import { useState, useEffect } from "react"
+import axios from "axios"
+import { useNavigate } from "react-router-dom"
+
+export default function PlanetsList() {
+  const [planets, setPlanets] = useState([])
+
+  useEffect(() => {
+    const getPlanets = async () => {
+      const response = await axios.get(`https://swapi.dev/api/planets`)
+      setPlanets(response.data.results)
+    }
+    getPlanets()
+  }, [])
+
+  let navigate = useNavigate()
+
+  const showPlanet = (index) => {
+    navigate(`/planets/${index}`)
+  }
+
+  return (
+    <div className="planet">
+      <h2>List of Planet</h2>
+      {
+        planets.map((planet, index) => (
+          <div key={index} onClick={() => showPlanet(index)} className="card">
+            <h3>{planet.name}</h3>
+          </div>
+        ))
+      }
+    </div>
+  )
+}
